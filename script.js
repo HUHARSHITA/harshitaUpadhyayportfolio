@@ -25,23 +25,20 @@ scrollToTopBtn.addEventListener('click', function() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
 
-// Show More Button
+/// Show More Button
 const showMoreBtn = document.getElementById("showMoreBtn");
 const projectCards = document.querySelectorAll(".project-card");
-let visibleProjects = 3; // Initially show 3 projects
+
+// Initially hide all cards after the third
+for (let i = 3; i < projectCards.length; i++) {
+    projectCards[i].style.display = "none";
+}
 
 showMoreBtn.addEventListener("click", function() {
-    visibleProjects += 1; // Show next project
-
-    // Show project
-    if (visibleProjects <= projectCards.length) {
-        projectCards[visibleProjects - 1].style.display = "block"; // Set display to block for the newly visible project
+    for (let i = 3; i < projectCards.length; i++) {
+        projectCards[i].style.display = "block"; // Show all hidden projects
     }
-
-    // Hide the "Show More" button if all projects are visible
-    if (visibleProjects >= projectCards.length) {
-        showMoreBtn.style.display = "none";
-    }
+    showMoreBtn.style.display = "none"; // Hide the button after showing all
 });
 
 //Hamburger Menu
