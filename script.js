@@ -25,22 +25,6 @@ scrollToTopBtn.addEventListener('click', function() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
 
-/// Show More Button
-const showMoreBtn = document.getElementById("showMoreBtn");
-const projectCards = document.querySelectorAll(".project-card");
-
-// Initially hide all cards after the third
-for (let i = 3; i < projectCards.length; i++) {
-    projectCards[i].style.display = "none";
-}
-
-showMoreBtn.addEventListener("click", function() {
-    for (let i = 3; i < projectCards.length; i++) {
-        projectCards[i].style.display = "block"; // Show all hidden projects
-    }
-    showMoreBtn.style.display = "none"; // Hide the button after showing all
-});
-
 //Hamburger Menu
 document.querySelector('.hamburger').addEventListener('click', function() {
         document.querySelector('.navbar-menu').classList.toggle('active');
@@ -88,3 +72,48 @@ experienceTitles.forEach(title => {
         experienceItem.classList.toggle('active');
     });
 });
+// Experience Section Expansion
+const experienceTitles = document.querySelectorAll('.experience-title');
+
+experienceTitles.forEach(title => {
+    title.addEventListener('click', function() {
+        const experienceItem = this.parentNode;
+        const allExperienceItems = document.querySelectorAll('.experience-item');
+
+        // Close any other open items
+        allExperienceItems.forEach(item => {
+            if (item !== experienceItem) {
+                item.classList.remove('active');
+            }
+        });
+
+        // Toggle the clicked item
+        experienceItem.classList.toggle('active');
+    });
+});
+// Projects Show More/Less
+const showMoreBtn = document.getElementById("showMoreBtn");
+const projectCards = document.querySelectorAll(".project-card");
+let projectsExpanded = false;
+
+showMoreBtn.addEventListener("click", function () {
+    projectsExpanded = !projectsExpanded;
+    for (let i = 3; i < projectCards.length; i++) {
+        projectCards[i].style.display = projectsExpanded ? "block" : "none";
+    }
+    showMoreBtn.textContent = projectsExpanded ? "Show Less" : "Show More";
+});
+
+// Competitions Show More/Less
+const showMoreCompetitionsBtn = document.getElementById("showMoreCompetitionsBtn");
+const competitionCards = document.querySelectorAll(".competition-card");
+let competitionsExpanded = false;
+
+showMoreCompetitionsBtn.addEventListener("click", function () {
+    competitionsExpanded = !competitionsExpanded;
+    for (let i = 3; i < competitionCards.length; i++) {
+        competitionCards[i].style.display = competitionsExpanded ? "block" : "none";
+    }
+    showMoreCompetitionsBtn.textContent = competitionsExpanded ? "Show Less" : "Show More";
+});
+
