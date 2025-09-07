@@ -379,4 +379,78 @@ h1, h2, h3 {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+
+}
+/* Competitions Section */
+.competitions-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #FDF4FF;
+}
+
+.competitions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.competition-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+.competition-card:hover {
+    transform: translateY(-5px);
+}
+
+.competition-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain; /* Keeps logos neat */
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.competition-card h3 {
+    margin-bottom: 10px;
+    color: #7B2CBF;
+}
+
+.competition-card p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.competition-date {
+    font-size: 0.9em;
+    color: #F72585;
+    font-weight: 600;
+}
+
+#showMoreCompetitionsBtn {
+    background-color: #9D4EDD;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+#showMoreCompetitionsBtn:hover {
+    background-color: #F72585;
+}
+
+/* Initially hide competition cards after the 3rd */
+.competition-card:nth-child(n+4) {
+    display: none;
 }
